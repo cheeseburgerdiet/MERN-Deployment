@@ -1,16 +1,16 @@
 const express = require('express');
 const cors = require ('cors');
 const app = express();
+const port = 8000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 
-require('dotenv').config();
-require('./config/mongoose.config')(process.env.DB_NAME);
+require('./config/mongoose.config');
 require('./routes/pet.routes')(app);
 
-app.listen(process.env.DB_PORT, () => 
-    console.log(`listening on port: ${process.env.DB}`));
+app.listen(port, () => 
+    console.log(`listening on port: ${port}`));
 
 
